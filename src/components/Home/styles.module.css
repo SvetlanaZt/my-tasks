@@ -1,0 +1,18 @@
+.boxList{
+    display: flex;
+    list-style: none;
+}
+.box{
+    width: 180px;
+}
+.wrapperInput{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 150px;
+    height: 150px;
+    border: dashed rgb(100, 100, 100);
+}
+.input{
+    width: 20px;
+}
