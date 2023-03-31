@@ -5,13 +5,13 @@ const arrayId = [1, 2, 3];
 
 const Home = () => {
   const [arrayIdNew, setArrayIdNew] = useState(arrayId);
-  const [currentIndex, setCurrentIndex] = useState(arrayIdNew.length);
+  const [currentIndex, setCurrentIndex] = useState(arrayIdNew.length + 1);
   const [inputValue, setInputValue] = useState<any>({ "0": " " });
   console.log(inputValue);
 
   const onClick = (id: number, e: any) => {
     setCurrentIndex(currentIndex + 1);
-    arrayIdNew.splice(id, 0, currentIndex + 1);
+    arrayIdNew.splice(id, 0, currentIndex);
     setArrayIdNew(arrayIdNew);
   };
   const onClickBlok = (e: any) => {
@@ -29,6 +29,7 @@ const Home = () => {
       <ul className={style.boxList}>
         {arrayIdNew?.map((id) => (
           <li key={id} onClick={(e) => onClick(id, e)} className={style.box}>
+            {id}
             <div className={style.wrapperInput} onClick={onClickBlok}>
               <input
                 type="text"
