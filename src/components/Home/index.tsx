@@ -35,6 +35,7 @@ const Home = () => {
             onClick={() => onClickElement(index)}
             className={style.box}
           >
+            {id}
             <div className={style.wrapperInput} onClick={onClickBlok}>
               <input
                 type="text"
