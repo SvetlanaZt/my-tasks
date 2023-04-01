@@ -34,7 +34,6 @@ const Home = () => {
       <ul className={style.boxList}>
         {arrayIdNew?.map((id, index) => (
           <li key={id} onClick={() => onClick(index)} className={style.box}>
-            {id}
             <div className={style.wrapperInput} onClick={onClickBlok}>
               <input
                 type="text"
