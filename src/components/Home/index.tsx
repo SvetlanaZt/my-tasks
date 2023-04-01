@@ -7,28 +7,28 @@ const Home = () => {
   const [arrayIdNew, setArrayIdNew] = useState(arrayId);
   const [currentIndex, setCurrentIndex] = useState(arrayIdNew.length + 1);
   const [inputValue, setInputValue] = useState<any>({ "0": " " });
-  console.log(inputValue);
 
-  const onClick = (id: number, e: any) => {
+  const onClick = (index: number, e: any) => {
     setCurrentIndex(currentIndex + 1);
-    arrayIdNew.splice(id, 0, currentIndex);
+    arrayIdNew.splice(index + 1, 0, currentIndex);
     setArrayIdNew(arrayIdNew);
   };
   const onClickBlok = (e: any) => {
     e.stopPropagation();
   };
   const onChangeInput = (e: any, id: any) => {
-    // const value = e.target.value;
     const lastLetter = e.target.value.substr(-1);
     setInputValue((prev: any) => ({ ...prev, [id]: lastLetter }));
   };
-  const getAllLetters = Object.values(inputValue).join("");
-
+  const getAllLetters = arrayIdNew?.map((id) => {
+    return inputValue && inputValue[id];
+  });
+  console.log(getAllLetters);
   return (
     <div className={style.blokBox}>
       <ul className={style.boxList}>
-        {arrayIdNew?.map((id) => (
-          <li key={id} onClick={(e) => onClick(id, e)} className={style.box}>
+        {arrayIdNew?.map((id, index) => (
+          <li key={id} onClick={(e) => onClick(index, e)} className={style.box}>
             {id}
             <div className={style.wrapperInput} onClick={onClickBlok}>
               <input
