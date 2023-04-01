@@ -7,6 +7,9 @@ const Home = () => {
   const [arrayIdNew, setArrayIdNew] = useState(arrayId);
   const [currentIndex, setCurrentIndex] = useState(arrayIdNew.length + 1);
   const [inputValue, setInputValue] = useState<any>({ "0": " " });
+  console.log(currentIndex);
+  console.log(arrayIdNew);
+  console.log(inputValue);
 
   const onClick = (index: number) => {
     setCurrentIndex(currentIndex + 1);
@@ -16,14 +19,16 @@ const Home = () => {
   const onClickBlok = (e: any) => {
     e.stopPropagation();
   };
-  const onChangeInput = (e: any, id: any) => {
+  const onChangeInput = (e: any, id: number) => {
     const lastLetter = e.target.value.substr(-1);
     setInputValue((prev: any) => ({ ...prev, [id]: lastLetter }));
   };
-  const getAllLetters = arrayIdNew?.map((id) => {
-    return inputValue && inputValue[id];
-  });
-  console.log(getAllLetters);
+  const getAllLetters =
+    arrayIdNew &&
+    arrayIdNew?.map((id) => {
+      return inputValue[id];
+    });
+
   return (
     <div className={style.blokBox}>
       <ul className={style.boxList}>
@@ -33,8 +38,8 @@ const Home = () => {
             <div className={style.wrapperInput} onClick={onClickBlok}>
               <input
                 type="text"
-                name={id.toString()}
-                value={inputValue[id.toString()]}
+                name="name"
+                value={inputValue[id] || ""}
                 onChange={(e) => onChangeInput(e, id)}
                 className={style.input}
               />
