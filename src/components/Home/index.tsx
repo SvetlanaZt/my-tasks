@@ -1,20 +1,17 @@
 import { useState } from "react";
 import style from "./styles.module.css";
 
-const arrayId = [1, 2, 3];
+const array = [1, 2, 3];
 
 const Home = () => {
-  const [arrayIdNew, setArrayIdNew] = useState(arrayId);
-  const [currentIndex, setCurrentIndex] = useState(arrayIdNew.length + 1);
+  const [arrayNew, setArrayNew] = useState(array);
+  const [currentElement, setCurrentElement] = useState(arrayNew.length + 1);
   const [inputValue, setInputValue] = useState<any>({ "0": " " });
-  console.log(currentIndex);
-  console.log(arrayIdNew);
-  console.log(inputValue);
 
-  const onClick = (index: number) => {
-    setCurrentIndex(currentIndex + 1);
-    arrayIdNew.splice(index + 1, 0, currentIndex);
-    setArrayIdNew(arrayIdNew);
+  const onClickElement = (index: number) => {
+    setCurrentElement(currentElement + 1);
+    arrayNew.splice(index + 1, 0, currentElement);
+    setArrayNew(arrayNew);
   };
   const onClickBlok = (e: any) => {
     e.stopPropagation();
@@ -24,16 +21,20 @@ const Home = () => {
     setInputValue((prev: any) => ({ ...prev, [id]: lastLetter }));
   };
   const getAllLetters =
-    arrayIdNew &&
-    arrayIdNew?.map((id) => {
+    arrayNew &&
+    arrayNew?.map((id) => {
       return inputValue[id];
     });
 
   return (
     <div className={style.blokBox}>
       <ul className={style.boxList}>
-        {arrayIdNew?.map((id, index) => (
-          <li key={id} onClick={() => onClick(index)} className={style.box}>
+        {arrayNew?.map((id, index) => (
+          <li
+            key={id}
+            onClick={() => onClickElement(index)}
+            className={style.box}
+          >
             <div className={style.wrapperInput} onClick={onClickBlok}>
               <input
                 type="text"
