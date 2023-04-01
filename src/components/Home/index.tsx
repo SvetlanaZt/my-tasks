@@ -8,7 +8,7 @@ const Home = () => {
   const [currentIndex, setCurrentIndex] = useState(arrayIdNew.length + 1);
   const [inputValue, setInputValue] = useState<any>({ "0": " " });
 
-  const onClick = (index: number, e: any) => {
+  const onClick = (index: number) => {
     setCurrentIndex(currentIndex + 1);
     arrayIdNew.splice(index + 1, 0, currentIndex);
     setArrayIdNew(arrayIdNew);
@@ -28,7 +28,7 @@ const Home = () => {
     <div className={style.blokBox}>
       <ul className={style.boxList}>
         {arrayIdNew?.map((id, index) => (
-          <li key={id} onClick={(e) => onClick(index, e)} className={style.box}>
+          <li key={id} onClick={() => onClick(index)} className={style.box}>
             {id}
             <div className={style.wrapperInput} onClick={onClickBlok}>
               <input
