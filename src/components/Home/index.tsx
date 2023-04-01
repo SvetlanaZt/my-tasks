@@ -6,24 +6,28 @@ const array = [1, 2, 3];
 const Home = () => {
   const [arrayNew, setArrayNew] = useState(array);
   const [currentElement, setCurrentElement] = useState(arrayNew.length + 1);
-  const [inputValue, setInputValue] = useState<any>({ "0": " " });
+  const [objectInputValues, setObjectInputValues] = useState<any>({ "0": " " });
 
   const onClickElement = (index: number) => {
     setCurrentElement(currentElement + 1);
     arrayNew.splice(index + 1, 0, currentElement);
     setArrayNew(arrayNew);
   };
-  const onClickBlok = (e: any) => {
+  const onClickBlok = (e: React.MouseEvent<HTMLDivElement>) => {
     e.stopPropagation();
   };
-  const onChangeInput = (e: any, id: number) => {
-    const lastLetter = e.target.value.substr(-1);
-    setInputValue((prev: any) => ({ ...prev, [id]: lastLetter }));
+  const onChangeInput = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    id: number
+  ) => {
+    const value = e.target.value;
+    const lastLetter = value.substr(-1);
+    setObjectInputValues((prev: object) => ({ ...prev, [id]: lastLetter }));
   };
   const getAllLetters =
     arrayNew &&
-    arrayNew?.map((id) => {
-      return inputValue[id];
+    arrayNew?.map((element) => {
+      return objectInputValues[element];
     });
 
   return (
@@ -35,12 +39,11 @@ const Home = () => {
             onClick={() => onClickElement(index)}
             className={style.box}
           >
-            {id}
             <div className={style.wrapperInput} onClick={onClickBlok}>
               <input
                 type="text"
                 name="name"
-                value={inputValue[id] || ""}
+                value={objectInputValues[id] || ""}
                 onChange={(e) => onChangeInput(e, id)}
                 className={style.input}
               />
