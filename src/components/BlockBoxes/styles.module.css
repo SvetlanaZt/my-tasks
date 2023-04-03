@@ -1,9 +1,10 @@
-.boxList{
+/* .boxList{
     display: flex;
     list-style: none;
 }
 .box{
     width: 180px;
+    display: flex;
 }
 .wrapperInput{
     display: flex;
@@ -15,4 +16,12 @@
 }
 .input{
     width: 20px;
+}
+.fgbdf{
+    background-color: aqua;
+    width: 100px;
+    height: 100px;
+} */
+.boxes{
+    display: flex;
 }
