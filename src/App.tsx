@@ -1,10 +1,10 @@
 // import Button from "./components/Button";
 
-import BlockBoxes from "./components/BlockBoxes";
+import Boxes from "./components/Boxes";
 
 function App() {
   // return <Button />;
-  return <BlockBoxes />;
+  return <Boxes />;
 }
 
 export default App;

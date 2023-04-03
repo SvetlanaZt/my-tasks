@@ -34,7 +34,7 @@ const arrayBoxes = [
   },
 ];
 
-const BlockBoxes = () => {
+const Boxes = () => {
   const [allBoxes, setAllBoxes] = useState(arrayBoxes);
 
   return (
@@ -61,4 +61,4 @@ const BlockBoxes = () => {
     </>
   );
 };
-export default BlockBoxes;
+export default Boxes;
